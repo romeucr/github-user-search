@@ -1,9 +1,13 @@
 import React from 'react'
 import './styles.css'
 
-const Button = () => (
+type Props = {
+      text: string
+}
+
+const Button = ({ text }: Props) => (
       <button className="site-btn">
-         <h5>Começar</h5>
+         <h5>{text}</h5>
       </button>
 )
 
