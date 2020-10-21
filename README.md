@@ -8,6 +8,9 @@ Some concepts used:
 * Forms
 * Routes
 
+## Try it!  
+Try it live on Netlify: https://rcrdev-github-user-search.netlify.app/
+
 ## Demo
 ![Github User Search Demo](demo.gif)
 
