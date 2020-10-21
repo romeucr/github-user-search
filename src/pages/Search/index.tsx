@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import Button from '../../core/components/Button'
+import { SearchResult } from '../../core/types/SearchResult'
 import ImageLoader from './components/Loaders/ImageLoader'
 import InfoLoader from './components/Loaders/InfoLoader'
 import './styles.css'
+import dayjs from 'dayjs'
+
 //import TempImage from './temporary.png'
 
 const Search = () => {
 
    const [search, setSearch] = useState('')
-   const [userData, setUserData] = useState()
+   const [userData, setUserData] = useState<SearchResult>()
    const [isLoading, setIsLoading] = useState(false);
 
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,6 +31,8 @@ const Search = () => {
       setSearch(event.target.value)
    }
 
+   const createdAt = dayjs(userData?.created_at).format("DD/MM/YYYY");
+
    return (
       <div className="search-container">
          <div className="search-box">
@@ -46,7 +51,7 @@ const Search = () => {
                </div>
             </form>
          </div>
-
+      
          {userData && (
             <div className="result-container">
                {isLoading ?
@@ -69,10 +74,10 @@ const Search = () => {
                               </div>
                               <div className="user-info">
                                  <h3 className="user-info-title">Informações</h3>
-                                 <div>Empresa: {userData.company}</div>
-                                 <div>Website/Blog: {userData.message}</div>
-                                 <div>Localidade: {userData.location}</div>
-                                 <div>Membro desde: {userData.created_at}</div>
+                                 <div><strong>Empresa:</strong> {userData.company}</div>
+                                 <div><strong>Website/Blog:</strong> {userData.blog}</div>
+                                 <div><strong>Localidade:</strong> {userData.location}</div>
+                                 <div><strong>Membro desde:</strong> {createdAt}</div>
                               </div>
                            </div>
                         </div>
